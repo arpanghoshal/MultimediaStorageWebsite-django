@@ -1,0 +1,108 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/photos_audios_videos.css' %}">
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="{% url 'home' %}" style="color: #f7f7f7">PAV Cloud</a>
+    		</div>
+    		{% if name %}
+            <ul class="nav navbar-nav">
+      			<li><a href="{% url 'photos' %}" style="color: #f7f7f7">Photos</a></li>
+      			<li><a href="{% url 'audios' %}" style="color: #f7f7f7">Audios</a></li>
+      			<li><a href="{% url 'videos' %}" style="color: #f7f7f7">Videos</a></li>
+    		</ul>
+        {% endif %}
+        {% if name %}
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="{% url 'logout' %}" style="color: #f7f7f7"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+
+        </ul>
+        {% endif %}
+        {% if not name %}
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="{% url 'register' %}" style="color: #f7f7f7"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+          <li><a href="{% url 'login' %}" style="color: #f7f7f7"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+        </ul>
+        {% endif %}
+
+  		</div>
+	</nav>
+  		<h2 align="center">Home</h2>
+        {% if name %}
+  		<div class="panel panel-default">
+  			<div class="panel-body">
+                <pre>
+                <b>Hi {{ name }}!</b>
+                Your all photos, audios and videos are secured in this server.
+                I've made a navbar so you could search your things.
+                Enjoy your unlimited space!
+                </pre>
+                <pre>
+                I could read your mind.
+                ...
+                So you are thinking how to upload the files, right?
+                It's there.
+                Down below.
+                *PAV stands for photos, audios and videos.
+                </pre>
+                <br>
+                <a href="{% url 'addphoto1' %}">
+                <img src="static/img/upload1.png" class="img-responsive center-block" style="height: 270px !important;">
+                </a>
+  			</div>
+		</div>
+        {% endif%}
+        {% if not name %}
+  		<div class="panel panel-default">
+  			<div class="panel-body">
+                <pre>
+                <b>Welcome stranger!</b>
+                Do <a href="{% url 'register' %}">register</a> to store your favourite multimedia files in a
+                super secure cloud.
+                Photos, audios and videos.
+                That's what multimedia consists of.
+                Try it!
+                That semi-logo at the top-right corner of the screen is
+                a secret button to home.
+                And yes,<a href="{% url 'login' %}">login</a> to access the PAV Cloud.
+                </pre>
+                <pre>
+                After getting a handful experience of this site,
+                you can give a feedback to the owner.
+                Owner?
+                <a href=#>Arpan Ghoshal</a>, who created this site as a summer
+                project, 2018.
+                Just ask him how he did it.
+                </pre>
+                <pre>
+                Mail him.
+                <a href=#>arpanghoshal.z@gmail.com</a>
+                </pre>
+                <pre>
+                * A tribute to Django Framework. *
+                </pre>
+  			</div>
+		</div>
+        {% endif%}
+
+
+
+
+</body>
+</html>

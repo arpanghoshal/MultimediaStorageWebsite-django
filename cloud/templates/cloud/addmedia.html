@@ -1,0 +1,130 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add multimedia files</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<link rel="stylesheet" href="{% static 'css/photos_audios_videos.css' %}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">.btn-bs-file{
+    position:relative;
+}
+.btn-bs-file input[type="file"]{
+    position: absolute;
+    top: -9999999;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    width:0;
+    height:0;
+    outline: none;
+    cursor: inherit;
+}</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="{% url 'home' %}" style="color: #f7f7f7">PAV Cloud</a>
+    		</div>
+    		<ul class="nav navbar-nav">
+      			<li><a href="{% url 'photos' %}" style="color: #f7f7f7">Photos</a></li>
+      			<li><a href="{% url 'audios' %}" style="color: #f7f7f7">Audios</a></li>
+      			<li ><a href="{% url 'videos' %}" style="color: #f7f7f7">Videos</a></li>
+                <li class="active"><a href="{% url 'addphoto1' %}" style="color: #f7f7f7">Upload</a></li>
+    		</ul>
+
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="{% url 'logout' %}" style="color: #f7f7f7"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+
+        </ul>
+
+      	<form class="navbar-form navbar-left srch" method="POST" action="{% url 'search' %}" name="search">
+      		<div class="input-group" >
+                {% csrf_token %}
+        		<input type="text" class="form-control" placeholder="Search" name="search">
+        		<div class="input-group-btn">
+          			<button class="btn btn-default" type="submit">
+            			<i class="glyphicon glyphicon-search"></i>
+          			</button>
+        		</div>
+      		</div>
+       	 </form>
+  		</div>
+	</nav>
+  		<h2 align="center">Upload<h2>
+
+  		<div class="panel panel-default" style="font-size:20px;">
+        <div class="panel-body">
+             <form method="post" action="/ap" enctype="multipart/form-data">
+                 {% csrf_token %}
+                 <div class="row">
+                <div class="col-lg-3">
+                  <img src="static/img/photos1.png" class="img-responsive" style="margin-top: 30px; margin-left: 25px;height: 65%;width: 65%">
+                </div>
+                <div style="margin-top: 30px; margin-left: 0px;">
+                      <label style="margin-bottom: 40px;">Photos</label>
+                      <br>
+                        <input class="form-control" type="text" placeholder="Enter name"  name="photosname"
+                               style="width: 200px; margin-top: 3px; margin-bottom: 5px">
+
+                     <div style="display: inline-block;">
+                   <label class="btn-bs-file btn btn-info">
+                        Browse
+                        <input type="file" name="photosbrowse" />
+                     </label>
+                    <button type="Submit" class="btn btn-primary" style="margin-left: 55px">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+              <form method="post" action="aa" enctype="multipart/form-data">
+                  <div class="row">
+                      {% csrf_token %}
+                <div class="col-lg-3">
+                  <img src="static/img/audios2.png" class="img-responsive" style="margin-top: 30px; margin-left: 25px;height: 65%;width: 65%">
+                </div>
+                <div style="margin-top: 30px; margin-left: 0px;">
+                      <label style="margin-bottom: 40px;">Audios</label>
+                      <br>
+                        <input class="form-control" type="text" placeholder="Enter name" style="width: 200px; margin-top: 3px; margin-bottom: 5px" name="audiosname">
+
+                     <div style="display: inline-block;">
+                   <label class="btn-bs-file btn btn-info">
+                        Browse
+                        <input type="file" name="audiosbrowse"/>
+                     </label>
+                    <button type="Submit" class="btn btn-primary" style="margin-left: 55px">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+         <form method="post" action="av"  enctype="multipart/form-data">
+             <div class="row">
+                 {% csrf_token %}
+                <div class="col-lg-3">
+                  <img src="static/img/videos1.png" class="img-responsive" style="margin-top: 45px; margin-left: 25px;height: 70%;width: 67%">
+                </div>
+                <div style="margin-top: 35px; margin-left: 0px;">
+                      <label style="margin-bottom: 40px;">Videos</label>
+                      <br>
+                        <input class="form-control" type="text" placeholder="Enter name" style="width: 200px; margin-top: 3px; margin-bottom: 5px" name="videosname">
+
+                     <div style="display: inline-block;">
+                   <label class="btn-bs-file btn btn-info">
+                        Browse
+                        <input type="file" name="videosbrowse"/>
+                     </label>
+                    <button type="Submit" class="btn btn-primary" style="margin-left: 55px">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        </div>
+
+
+</body>
+</html>

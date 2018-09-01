@@ -1,0 +1,13 @@
+body{ overflow-x: hidden; }
+      .serchbox{width: 200px; transition: .5s; margin-top: 5px; background-color: grey;}
+      .serchbox:focus{width: 600px;}
+      .frm{ float: left; }
+      .b{    background-color: #0466aa; text-align: center;padding-top: 0px;color: white;padding: 6px 0px;}
+      .nav{ padding-top:0px !important;}
+      .nav img{width:50px; }
+        .nav1{border-radius: 0px;margin-bottom: 0px;}
+      .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img { width: 50%; margin: auto;}
+        .sigbuttn{ size:10px; margin: 10px; color: white !important;}
+        .a{margin-top: 30px;}
+        .bs{background-color: #a94442;}

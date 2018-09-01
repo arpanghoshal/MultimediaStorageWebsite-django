@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Videos</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/photos_audios_videos.css' %}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}" style="color: #f7f7f7">PAV Cloud</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="{% url 'photos' %}" style="color: #f7f7f7">Photos</a></li>
+            <li><a href="{% url 'audios' %}" style="color: #f7f7f7">Audios</a></li>
+            <li class="active"><a href="{% url 'videos' %}" style="color: #f7f7f7">Videos</a></li>
+            <li><a href="{% url 'addphoto1' %}" style="color: #f7f7f7">Upload</a></li>
+        </ul>
+
+        {% if name %}
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="{% url 'logout' %}" style="color: #f7f7f7"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+
+        </ul>
+        {% endif %}
+        {% if not name %}
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="{% url 'register' %}" style="color: #f7f7f7"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+          <li><a href="{% url 'login' %}" style="color: #f7f7f7"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+        </ul>
+        {% endif %}
+
+        <form class="navbar-form navbar-left srch" method="POST" action="{% url 'search' %}" name="search">
+      		<div class="input-group" >
+                {% csrf_token %}
+        		<input type="text" class="form-control" placeholder="Search" name="search">
+        		<div class="input-group-btn">
+          			<button class="btn btn-default" type="submit">
+            			<i class="glyphicon glyphicon-search"></i>
+          			</button>
+        		</div>
+      		</div>
+       	 </form>
+      </div>
+  </nav>
+
+  		<h2 align="center">{{ name }}'s videos</h2>
+
+  		<div class="panel panel-default">
+  			<div class="panel-body">
+  				<div class="row">
+    				<div style="margin:15px !important">
+                        {% for k in c %}
+    					<div class="col-lg-3">
+
+                            <video controls height="100%" width="100%" src="{% static "../media/" %}{{ k.videosbrowse }}" type="video/mp4" data-toggle="tooltip" data-placement="right" title="{{ k.videosname }}>
+                </video>
+    					</div> {% endfor %}
+
+    				</div>
+          </div>
+
+
+        </div>
+
+
+</body>
+</html>
